@@ -43,8 +43,13 @@ class LoginController extends Controller
     public function username()
     {
 
-        return "email";
 
+        $value=request()->input("input"); //kamal@gmail.com or 0599551568
+        //يتم عمل فيلتر للمدخل في اللوجين في حال كان إيميل يدخل بالإيميل في حال كان موبايل يدخل بالموبايل
+       $field= filter_var($value,FILTER_VALIDATE_EMAIL)?'email':'mobile';
+        //add the values to the request by merge then return the email or mobile
+       request()->merge([$field=>$value]);
+       return $field; //return the value who login with
     }
 
 

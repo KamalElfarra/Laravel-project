@@ -12,12 +12,12 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">email</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">email or mobile</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"   autofocus>
+                                <input id="input" type="text" class="form-control @error('input') is-invalid @enderror" name="input" value="{{ old('input') }}" required autocomplete="input"   autofocus>
 
-                                @error('email')
+                                @error('input')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -56,6 +56,13 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-2">
+                                        <a href="{{ url('/login/facebook') }}" class="btn btn-primary"> Facebook</a>
+
+                                    </div>
+                                </div>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
