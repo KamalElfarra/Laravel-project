@@ -20,8 +20,15 @@ Route::get('login/{provider}/callback','SocialController@Callback');
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
+Route::get('/fillable','CrudController@get_data');
 
 Route::get('/', function () {
     return view ('welcome');
 });
 
+Route::group(['prefix'=>'offers'],function (){
+
+    Route::get("/create","CrudController@create");
+    Route::post("/store","CrudController@store");
+
+});
