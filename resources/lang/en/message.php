@@ -15,6 +15,9 @@ return [
 
     'Hello'=>"Hello",
     'welcome'=>"welcome",
+    'error_name'=>"error on the name",
+    'error_price'=>"error on the price",
+    'error_details'=>"error on the  details",
 
 
 ];

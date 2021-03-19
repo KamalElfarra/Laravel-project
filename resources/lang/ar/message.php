@@ -15,6 +15,9 @@ return [
 
     'Hello'=>"مرحبا",
     'welcome'=>"أهلا وسهلا",
+    'error_name'=>"خطأ في الإسم",
+    'error_price'=>"خطأ في السعر",
+    'error_details'=>"خطأ في التفاصيل",
 
 
 ];

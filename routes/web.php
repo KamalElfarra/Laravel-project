@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 Auth::routes(['verify'=>true]);
 
 //لازم علشان توصل داخل الموقع تكون مسجل الإيميل والباسوورد وتكون متحقق من الإيميل
@@ -25,10 +28,14 @@ Route::get('/fillable','CrudController@get_data');
 Route::get('/', function () {
     return view ('welcome');
 });
+Route::group(['prefix' => LaravelLocalization::setLocale(),	'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function() {
 
 Route::group(['prefix'=>'offers'],function (){
 
-    Route::get("/create","CrudController@create");
-    Route::post("/store","CrudController@store");
+         Route::get("/create","CrudController@create");
+         Route::any("/store","CrudController@store");
+
+});
+
 
 });

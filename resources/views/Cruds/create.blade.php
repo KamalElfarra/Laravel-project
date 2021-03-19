@@ -75,6 +75,34 @@
         </style>
     </head>
     <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">{{ $properties['native'] }}<span class="sr-only">(current)</span></a>
+                </li>
+
+                @endforeach
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -103,21 +131,21 @@
                         <label for="exampleInputEmail1">Name</label>
                         <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the name">
                         @error('name')
-                        <small id="emailHelp" class="form-text text-muted">error name</small>
+                        <small id="emailHelp" class="form-text text-muted">{{__('message.error_name')}}</small>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">price</label>
                         <input name="price" type="number" class="form-control" id="exampleInputPassword1" placeholder="Price">
                         @error('price')
-                        <small id="emailHelp" class="form-text text-muted">error price</small>
+                        <small id="emailHelp" class="form-text text-muted">{{__('message.error_price')}}</small>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">details</label>
                         <textarea name="details" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         @error('details')
-                        <small id="emailHelp" class="form-text text-muted">error details</small>
+                        <small id="emailHelp" class="form-text text-muted">{{__('message.error_details')}}</small>
                         @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
